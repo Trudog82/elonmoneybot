@@ -18,9 +18,14 @@ def sentimentAnalysis():
 
     with open("fullTweet.txt", "r") as fulltweets:
         for line in fulltweets:
+            full_tweet = line
             for word in line.split():
                 if(word == "don't" or word == 'dont'):
                     neg_correct += 1
+                    
+                if(word[0] == "?" or word[0] == "#"):
+                    word = word[1:]
+                
                 analysis = TextBlob(word)
 
                 if analysis.sentiment.polarity <= 0:
@@ -32,33 +37,36 @@ def sentimentAnalysis():
                 #stock names and tickers 
                 big_stocks_dictionary = {}
                 big_stocks_file = open("tickersBigTXT.txt")
-                for line in big_stocks_file:
-                    value, key = line.lower().split()
+                for line_ in big_stocks_file:
+                    value, key = line_.lower().split()
                     big_stocks_dictionary[key] = value
 
                #find if its in the dictionary 
                 if word.lower() in  big_stocks_dictionary.keys():
                    tickerName = big_stocks_dictionary[word]
                    stockBool = True
+                   print("1")
                 elif word.lower() in big_stocks_dictionary.values():
                     tickerName = word
                     stockBool = True
+                    print("2")
                 else:
                     
                     # all traded tickers
                     fileHandler = open("tickersTXT.txt", "r")
                     listOfLines = fileHandler.readlines()
-                    for line in listOfLines:
-                        if(line.strip().lower() == word.lower()):
+                    for line_ in listOfLines:
+                        if(line_.strip().lower() == word.lower()):
                             tickerName = word
                             stockBool = True
+                            print("3")
                             break
                     
                 #Crypto Dictonary 
                 crypto_dictionary = {}
                 crypto_file = open("tickersCryptoTXT.txt")
-                for line in crypto_file:
-                    value, key = line.lower().split()
+                for line_ in crypto_file:
+                    value, key = line_.lower().split()
                     crypto_dictionary[key] = value
 
                #find if its in the dictionary 
@@ -80,12 +88,15 @@ def sentimentAnalysis():
 
     if(neg_acc < 30):
         print("neg")
-        if(stockBool == True):
+        if(cryptoBoolean == True):
+            crypto_bot(tickerName.upper(), 50000, 50000, full_tweet)
+        elif(stockBool == True):
             print("use alpaca", tickerName)
             Alpaca_func(tickerName.upper(), 1)
-        elif(cryptoBoolean == True):
-            crypto_bot(tickerName.upper(), 50000, 50000)
-            
+
+    
+    stockBool = False
+    cryptoBoolean = False
     time.sleep(30)
     
     stockBool = False
