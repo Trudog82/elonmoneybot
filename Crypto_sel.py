@@ -1,13 +1,13 @@
 from selenium import webdriver
-#driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 account_total_USD = 10000
 
 #login 
 
 
 
-def crypto_bot(TCKER, account_total_USD, account_total_BTC, line):
-    driver = webdriver.Chrome()
+def crypto_bot(TCKER, account_total_USD, account_total_BTC):
+    #driver = webdriver.Chrome()
         
     #login
     driver.get("https://cryptoparrot.com/login")
@@ -51,7 +51,7 @@ def crypto_bot(TCKER, account_total_USD, account_total_BTC, line):
         #Opens the textbox
         text_box = driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[2]/form/div/div/div[3]/div[4]/div[1]/div[1]/textarea")
         text_box.clear()
-        text_box.send_keys(line)
+        text_box.send_keys("Suck it ")
         
         #clicks the buy 
         driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[2]/form/div/div/div[3]/div[4]/div[3]/div[2]/button").click()
@@ -142,11 +142,12 @@ def crypto_bot(TCKER, account_total_USD, account_total_BTC, line):
         #Opens the textbox
         text_box = driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[2]/form/div/div/div[3]/div[4]/div[1]/div[1]/textarea")
         text_box.clear()
-        text_box.send_keys(line)
+        text_box.send_keys("Suck it ")
         
         #clicks the buy 
         driver.find_element_by_xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[2]/form/div/div/div[3]/div[4]/div[3]/div[2]/button").click()
     
     driver.close()
 
-#crypto_bot("OMG", 50000, 50000)
+#crypto_bot("btc", 50000, 50000)
+
