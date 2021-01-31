@@ -1,0 +1,16 @@
+BTC Bitcoin
+ETH Ethereum
+LTC Litecoin
+XRP Ripple
+RVN Ravencoin
+THR ThoreCoin
+BAT BAT
+EOS EOS
+DSH DASH
+XMR Monero
+NEO NEO
+OMG OmiseGo
+TUBE Tube
+DGB DigiByte
+DOGE Dogecoin
+STEEM STEEM
