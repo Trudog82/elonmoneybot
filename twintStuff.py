@@ -34,9 +34,9 @@ while(True):
     
     for user in csv.reader(csvnames):
    
-        c.Username = "elonmoneybot" 
+        c.Username = user[0] 
    
-    
+      
     # Run
         twint.run.Search(c)
         pastTweet = tweet
@@ -59,7 +59,7 @@ while(True):
             
             if(pastTweet != tweet):
                 print("\n")
-                print("Tweet from @" + "elonmoneybot")
+                print("Tweet from @" + user[0])
                 print("-----------------------------")
                 print(tweet)
                 with open("fullTweet.txt", "w") as text_file:
@@ -72,5 +72,4 @@ while(True):
             os.remove("test.txt")
             
         except:
-            print("No new tweets from @" + "elonmoneybot")
-
+            print("No new tweets from @" + user[0])
