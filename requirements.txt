@@ -1,0 +1,5 @@
+textblob==0.15.3
+twint==2.1.21
+selenium==3.141.0
+alpaca_trade_api==1.0.1
+nest_asyncio==1.5.1
